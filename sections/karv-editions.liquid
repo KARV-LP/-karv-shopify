@@ -1,0 +1,35 @@
+<section class="karv-editions karv-shell">
+  <div class="karv-section-label"><span>{{ section.settings.eyebrow }}</span></div>
+  <div class="karv-editions__grid">
+    {% for block in section.blocks %}
+      {% assign collection = block.settings.collection %}
+      <article class="karv-edition" {{ block.shopify_attributes }}>
+        <a href="{% if block.settings.link != blank %}{{ block.settings.link }}{% elsif collection != blank %}{{ collection.url }}{% else %}#{% endif %}">
+          <div class="karv-edition__image">
+            {% if block.settings.image != blank %}
+              {{ block.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600,900,1200,1600', sizes: '(min-width: 900px) 50vw, 100vw' }}
+            {% elsif collection != blank and collection.featured_image != blank %}
+              {{ collection.featured_image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600,900,1200,1600', sizes: '(min-width: 900px) 50vw, 100vw' }}
+            {% elsif block.settings.title contains 'MANDALA' %}
+              <img src="{{ 'placeholder-mandala.svg' | asset_url }}" alt="Visual temporário MANDALA" loading="lazy">
+            {% else %}
+              <img src="{{ 'placeholder-ryujin.svg' | asset_url }}" alt="Visual temporário RYUJIN" loading="lazy">
+            {% endif %}
+            <div class="karv-edition__copy">
+              <span class="karv-edition__number">0{{ forloop.index }}</span>
+              <h3>{% if block.settings.title != blank %}{{ block.settings.title }}{% elsif collection != blank %}{{ collection.title }}{% else %}Edição KARV{% endif %}</h3>
+              {% if block.settings.text != blank %}<div>{{ block.settings.text }}</div>{% endif %}
+              <span class="karv-edition__cta">CONHECER EDIÇÃO →</span>
+            </div>
+          </div>
+        </a>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+{% stylesheet %}
+.karv-editions{padding-top:44px;padding-bottom:54px}.karv-section-label{display:flex;align-items:center;gap:18px;margin-bottom:24px;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em}.karv-section-label:after{content:'';width:48px;height:1px;background:var(--karv-line)}.karv-editions__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.karv-edition__image{position:relative;aspect-ratio:1.7/1;overflow:hidden;border-radius:6px;background:#e9e5de}.karv-edition__image img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}.karv-edition__image:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(245,242,236,.88),rgba(245,242,236,.28) 55%,transparent)}.karv-edition:hover img{transform:scale(1.025)}.karv-edition__copy{position:absolute;z-index:2;left:30px;top:30px;bottom:28px;width:42%;display:flex;flex-direction:column;align-items:flex-start}.karv-edition__number{font-size:.72rem;color:var(--karv-muted);margin-bottom:12px}.karv-edition h3{font-size:clamp(1.7rem,3vw,3rem);font-weight:500;letter-spacing:.04em;margin:0 0 14px}.karv-edition__copy div{font-size:.85rem;max-width:190px}.karv-edition__cta{margin-top:auto;font-size:.75rem;border-bottom:1px solid currentColor;padding-bottom:4px}@media(max-width:760px){.karv-editions__grid{grid-template-columns:1fr}.karv-edition__image{aspect-ratio:1/1}.karv-edition__copy{width:52%;left:20px;top:22px;bottom:22px}}
+{% endstylesheet %}
+{% schema %}
+{"name":"KARV — Edições","settings":[{"type":"text","id":"eyebrow","label":"Título da seção","default":"EDIÇÕES AUTORAIS"}],"blocks":[{"type":"edition","name":"Edição","settings":[{"type":"collection","id":"collection","label":"Coleção Shopify"},{"type":"image_picker","id":"image","label":"Imagem editorial"},{"type":"text","id":"title","label":"Título"},{"type":"richtext","id":"text","label":"Descrição","default":"<p>Forma, identidade e expressão.</p>"},{"type":"url","id":"link","label":"Link da edição / KARV Core"}]}],"max_blocks":6,"presets":[{"name":"KARV — Edições","blocks":[{"type":"edition"},{"type":"edition"}]}]}
+{% endschema %}

@@ -1,0 +1,30 @@
+<footer class="karv-site-footer">
+  <div class="karv-shell karv-site-footer__grid">
+    <div class="karv-site-footer__brand-block">
+      <p class="karv-site-footer__brand">KARV</p>
+      <p class="karv-site-footer__statement">{{ section.settings.statement }}</p>
+      <span class="karv-site-footer__copyright">© {{ 'now' | date: '%Y' }} {{ shop.name }}. Todos os direitos reservados.</span>
+    </div>
+    <nav class="karv-site-footer__nav" aria-label="Navegação do rodapé">
+      {% if section.settings.menu != blank %}
+        {% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
+      {% else %}
+        <a href="/pages/sobre">Sobre a KARV</a><a href="/pages/atendimento">Atendimento</a><a href="/policies/privacy-policy">Privacidade</a>
+      {% endif %}
+    </nav>
+    <div class="karv-site-footer__meta">
+      <span class="karv-site-footer__label">ATENDIMENTO</span>
+      {% if section.settings.contact != blank %}<a href="{{ section.settings.contact_url }}">{{ section.settings.contact }}</a>{% endif %}
+    </div>
+    <div class="karv-site-footer__meta">
+      <span class="karv-site-footer__label">SIGA A KARV</span>
+      <div class="karv-site-footer__social"><span>Instagram</span><span>Pinterest</span></div>
+    </div>
+  </div>
+</footer>
+{% stylesheet %}
+.karv-site-footer{background:#f4f1eb;border-top:1px solid var(--karv-line);padding:42px 0 48px}.karv-site-footer__grid{display:grid;grid-template-columns:1.35fr .8fr .8fr .8fr;gap:34px}.karv-site-footer__brand{font-size:2rem;letter-spacing:.18em;margin:0 0 10px}.karv-site-footer__statement{max-width:240px;font-size:.78rem;color:var(--karv-muted);margin:0 0 34px}.karv-site-footer__copyright{font-size:.65rem;color:var(--karv-muted)}.karv-site-footer__nav,.karv-site-footer__meta{display:flex;flex-direction:column;align-items:flex-start;gap:8px;font-size:.72rem}.karv-site-footer__label{font-size:.65rem;letter-spacing:.08em;margin-bottom:8px;color:var(--karv-muted)}.karv-site-footer__social{display:flex;gap:14px;font-size:.7rem}@media(max-width:800px){.karv-site-footer__grid{grid-template-columns:1fr 1fr}.karv-site-footer__brand-block{grid-column:1/-1}}@media(max-width:520px){.karv-site-footer__grid{grid-template-columns:1fr}}
+{% endstylesheet %}
+{% schema %}
+{"name":"Footer KARV","settings":[{"type":"text","id":"statement","label":"Assinatura","default":"Design autoral, materiais selecionados e identidade."},{"type":"link_list","id":"menu","label":"Menu do rodapé"},{"type":"text","id":"contact","label":"Texto de contato","default":"Fale com a KARV"},{"type":"url","id":"contact_url","label":"Link de contato"}]}
+{% endschema %}

@@ -1,0 +1,12 @@
+{
+  "current": {
+    "background": "#F4F1EB",
+    "text": "#161616"
+  },
+  "presets": {
+    "KARV": {
+      "background": "#F4F1EB",
+      "text": "#161616"
+    }
+  }
+}

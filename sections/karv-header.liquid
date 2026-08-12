@@ -1,0 +1,49 @@
+<header class="karv-site-header" data-karv-header>
+  <div class="karv-site-header__inner">
+    <a class="karv-brand" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+      {% if section.settings.logo != blank %}
+        {{ section.settings.logo | image_url: width: 360 | image_tag: class: 'karv-brand__logo', widths: '120,180,240,360', alt: shop.name }}
+      {% else %}
+        <span>KARV</span>
+      {% endif %}
+    </a>
+
+    <button class="karv-menu-toggle" type="button" aria-expanded="false" aria-controls="KarvPrimaryNav" data-karv-menu-toggle>
+      <span>Menu</span>
+      <span class="karv-menu-toggle__icon" aria-hidden="true"></span>
+    </button>
+
+    <nav id="KarvPrimaryNav" class="karv-primary-nav" aria-label="Navegação principal" data-karv-menu>
+      {% if section.settings.menu != blank %}
+        {% for link in section.settings.menu.links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+      {% else %}
+        <a href="{{ routes.all_products_collection_url }}">Coleções</a>
+        <a href="/pages/karv">KARV</a>
+      {% endif %}
+    </nav>
+
+    <a class="karv-cart-link" href="{{ routes.cart_url }}" aria-label="Carrinho com {{ cart.item_count }} itens">
+      Carrinho <span>({{ cart.item_count }})</span>
+    </a>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header KARV",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu principal"
+    }
+  ]
+}
+{% endschema %}

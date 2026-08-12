@@ -1,0 +1,28 @@
+<section class="karv-materials karv-shell">
+  <div class="karv-materials__intro">
+    <p class="karv-section-label"><span>{{ section.settings.eyebrow }}</span></p>
+    <h2>{{ section.settings.heading }}</h2>
+    <div class="karv-materials__text">{{ section.settings.text }}</div>
+    {% if section.settings.link != blank %}<a class="karv-text-link" href="{{ section.settings.link }}">{{ section.settings.link_label }} →</a>{% endif %}
+  </div>
+  <div class="karv-materials__grid">
+    {% for block in section.blocks %}
+      <article {{ block.shopify_attributes }}>
+        <div class="karv-materials__image">
+          {% if block.settings.image != blank %}
+            {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400,650,900', sizes: '(min-width: 900px) 20vw, 50vw' }}
+          {% else %}
+            <img src="{{ 'placeholder-material.svg' | asset_url }}" alt="Visual temporário de material KARV" loading="lazy">
+          {% endif %}
+        </div>
+        <h3>{{ block.settings.title }}</h3><p>{{ block.settings.caption }}</p>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+{% stylesheet %}
+.karv-materials{display:grid;grid-template-columns:220px 1fr;gap:28px;padding-top:18px;padding-bottom:56px}.karv-materials__intro h2{font-size:1rem;font-weight:500;line-height:1.35;text-transform:uppercase;margin:0 0 24px}.karv-materials__text{font-size:.88rem;color:var(--karv-muted);margin-bottom:26px}.karv-text-link{font-size:.75rem;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:4px}.karv-materials__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.karv-materials__image{aspect-ratio:.86/1;overflow:hidden;border-radius:6px;background:#e6e1d9}.karv-materials__image img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}.karv-materials article:hover img{transform:scale(1.03)}.karv-materials h3{font-size:.72rem;text-transform:uppercase;margin:12px 0 3px}.karv-materials article p{font-size:.7rem;color:var(--karv-muted);margin:0}@media(max-width:900px){.karv-materials{grid-template-columns:1fr}.karv-materials__grid{grid-template-columns:repeat(2,1fr)}}
+{% endstylesheet %}
+{% schema %}
+{"name":"KARV — Materiais","settings":[{"type":"text","id":"eyebrow","label":"Linha superior","default":"FORMA, MATERIAL E EXPRESSÃO."},{"type":"text","id":"heading","label":"Título","default":"Cada detalhe importa."},{"type":"richtext","id":"text","label":"Texto","default":"<p>Materiais selecionados, acabamentos precisos e costuras que revelam cuidado em cada ângulo.</p>"},{"type":"text","id":"link_label","label":"CTA","default":"EXPLORAR MATERIAIS"},{"type":"url","id":"link","label":"Link"}],"blocks":[{"type":"material","name":"Material / detalhe","settings":[{"type":"image_picker","id":"image","label":"Imagem"},{"type":"text","id":"title","label":"Título","default":"MATERIAL"},{"type":"text","id":"caption","label":"Legenda","default":"Texturas que contam histórias."}]}],"max_blocks":4,"presets":[{"name":"KARV — Materiais","blocks":[{"type":"material"},{"type":"material"},{"type":"material"},{"type":"material"}]}]}
+{% endschema %}

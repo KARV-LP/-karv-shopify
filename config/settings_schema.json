@@ -1,0 +1,15 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "KARV",
+    "theme_author": "KARV",
+    "theme_version": "0.1.0"
+  },
+  {
+    "name": "Identidade KARV",
+    "settings": [
+      {"type":"color","id":"background","label":"Fundo principal","default":"#F4F1EB"},
+      {"type":"color","id":"text","label":"Texto principal","default":"#161616"}
+    ]
+  }
+]

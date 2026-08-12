@@ -1,0 +1,11 @@
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "karv_footer": {
+      "type": "karv-footer",
+      "settings": {}
+    }
+  },
+  "order": ["karv_footer"]
+}
