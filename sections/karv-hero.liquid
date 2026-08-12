@@ -1,34 +1,25 @@
-<section class="karv-hero" style="--hero-overlay: {{ section.settings.overlay | divided_by: 100.0 }}">
-  {% if section.settings.image != blank %}
-    {{ section.settings.image | image_url: width: 2400 | image_tag: class: 'karv-hero__media', loading: 'eager', widths: '750,1100,1500,2000,2400', sizes: '100vw' }}
-  {% endif %}
-  <div class="karv-hero__shade"></div>
-  <div class="karv-shell karv-hero__content">
-    {% if section.settings.eyebrow != blank %}<p class="karv-eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
-    <h1>{{ section.settings.heading }}</h1>
-    {% if section.settings.text != blank %}<div class="karv-hero__text">{{ section.settings.text }}</div>{% endif %}
-    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
-      <a class="karv-button" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+<section class="karv-hero karv-shell">
+  <div class="karv-hero__frame">
+    {% if section.settings.image != blank %}
+      {{ section.settings.image | image_url: width: 2400 | image_tag: class: 'karv-hero__media', loading: 'eager', widths: '750,1100,1500,2000,2400', sizes: '100vw' }}
     {% endif %}
+    <div class="karv-hero__wash"></div>
+    <div class="karv-hero__rail" aria-hidden="true"><span>01</span><span>02</span><span>03</span><span>04</span></div>
+    <div class="karv-hero__content">
+      {% if section.settings.eyebrow != blank %}<p class="karv-eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+      <h1>{{ section.settings.heading }}</h1>
+      {% if section.settings.text != blank %}<div class="karv-hero__text">{{ section.settings.text }}</div>{% endif %}
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+        <a class="karv-button karv-button--dark" href="{{ section.settings.button_link }}">{{ section.settings.button_label }} <span aria-hidden="true">→</span></a>
+      {% endif %}
+    </div>
   </div>
 </section>
 
 {% stylesheet %}
-.karv-hero{position:relative;min-height:78svh;display:grid;align-items:end;overflow:hidden;background:#252525;color:white}.karv-hero__media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.karv-hero__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,var(--hero-overlay)))}.karv-hero__content{position:relative;width:100%;padding-top:140px;padding-bottom:72px}.karv-hero h1{max-width:980px;margin:14px 0 20px;font-size:clamp(3rem,8vw,8.5rem);line-height:.88;letter-spacing:-.055em;font-weight:500}.karv-hero__text{max-width:620px;font-size:clamp(1rem,1.5vw,1.25rem);margin-bottom:28px}.karv-hero .karv-eyebrow{color:rgba(255,255,255,.72)}@media(max-width:760px){.karv-hero{min-height:72svh}.karv-hero__content{padding-top:100px;padding-bottom:42px}.karv-hero h1{font-size:clamp(3.2rem,16vw,5.2rem)}}
+.karv-hero{padding-top:18px}.karv-hero__frame{position:relative;min-height:620px;overflow:hidden;border-radius:6px;background:#e9e3da}.karv-hero__media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.karv-hero__wash{position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,243,237,.96) 0%,rgba(246,243,237,.78) 38%,rgba(246,243,237,.08) 67%,rgba(246,243,237,0) 100%)}.karv-hero__content{position:relative;z-index:2;max-width:650px;padding:150px 56px 88px 120px}.karv-hero h1{margin:18px 0 22px;font-size:clamp(3rem,5.3vw,6rem);line-height:.98;letter-spacing:-.045em;font-weight:500}.karv-hero__text{max-width:480px;font-size:1.08rem;margin-bottom:28px}.karv-hero__rail{position:absolute;z-index:2;left:34px;top:170px;display:flex;flex-direction:column;gap:22px;font-size:.7rem;color:#777}.karv-hero__rail:after{content:'';position:absolute;left:9px;top:24px;width:1px;height:118px;background:rgba(0,0,0,.16)}.karv-button--dark{background:#151515;color:#fff;border-color:#151515;gap:18px}@media(max-width:760px){.karv-hero{padding-top:8px}.karv-hero__frame{min-height:680px}.karv-hero__wash{background:linear-gradient(180deg,rgba(246,243,237,.96) 0%,rgba(246,243,237,.8) 48%,rgba(246,243,237,.08) 78%)}.karv-hero__content{padding:64px 24px}.karv-hero__rail{display:none}.karv-hero h1{font-size:clamp(3rem,13vw,5rem)}}
 {% endstylesheet %}
 
 {% schema %}
-{
-  "name": "KARV — Hero",
-  "settings": [
-    {"type":"image_picker","id":"image","label":"Imagem principal"},
-    {"type":"text","id":"eyebrow","label":"Linha superior","default":"KARV · Design autoral"},
-    {"type":"text","id":"heading","label":"Título","default":"Objetos com presença."},
-    {"type":"richtext","id":"text","label":"Texto","default":"<p>Poltronas concebidas como peças de identidade, matéria e expressão.</p>"},
-    {"type":"text","id":"button_label","label":"Texto do botão","default":"Conhecer as edições"},
-    {"type":"url","id":"button_link","label":"Link do botão"},
-    {"type":"range","id":"overlay","label":"Escurecimento da imagem","min":0,"max":80,"step":5,"unit":"%","default":40}
-  ],
-  "presets": [{"name":"KARV — Hero"}]
-}
+{"name":"KARV — Hero","settings":[{"type":"image_picker","id":"image","label":"Imagem principal"},{"type":"text","id":"eyebrow","label":"Linha superior","default":"KARV DESIGN"},{"type":"text","id":"heading","label":"Título","default":"DESIGN QUE CARREGA HISTÓRIAS."},{"type":"richtext","id":"text","label":"Texto","default":"<p>Poltronas autorais construídas através de forma, material e identidade.</p>"},{"type":"text","id":"button_label","label":"Texto do botão","default":"CONHEÇA AS EDIÇÕES"},{"type":"url","id":"button_link","label":"Link do botão"}],"presets":[{"name":"KARV — Hero"}]}
 {% endschema %}
