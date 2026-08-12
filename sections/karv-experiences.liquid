@@ -5,7 +5,13 @@
       <article class="karv-experience" {{ block.shopify_attributes }}>
         <a href="{{ block.settings.link | default: '#' }}">
           <div class="karv-experience__media">
-            {% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600,900,1200,1600', sizes: '(min-width: 900px) 50vw, 100vw' }}{% endif %}
+            {% if block.settings.image != blank %}
+              {{ block.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600,900,1200,1600', sizes: '(min-width: 900px) 50vw, 100vw' }}
+            {% elsif block.settings.title contains 'MANDALA' %}
+              <img src="{{ 'placeholder-mandala.svg' | asset_url }}" alt="Visual temporário da experiência MANDALA" loading="lazy">
+            {% else %}
+              <img src="{{ 'placeholder-ryujin.svg' | asset_url }}" alt="Visual temporário da experiência RYUJIN" loading="lazy">
+            {% endif %}
             <div class="karv-experience__shade"></div>
             <div class="karv-experience__copy"><h3>{{ block.settings.title }}</h3><span>{{ block.settings.cta }} →</span></div>
           </div>
