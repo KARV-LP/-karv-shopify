@@ -1,0 +1,11 @@
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "karv_header": {
+      "type": "karv-header",
+      "settings": {}
+    }
+  },
+  "order": ["karv_header"]
+}
