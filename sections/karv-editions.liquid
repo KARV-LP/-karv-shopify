@@ -6,7 +6,15 @@
       <article class="karv-edition" {{ block.shopify_attributes }}>
         <a href="{% if block.settings.link != blank %}{{ block.settings.link }}{% elsif collection != blank %}{{ collection.url }}{% else %}#{% endif %}">
           <div class="karv-edition__image">
-            {% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600,900,1200,1600', sizes: '(min-width: 900px) 50vw, 100vw' }}{% elsif collection != blank and collection.featured_image != blank %}{{ collection.featured_image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600,900,1200,1600', sizes: '(min-width: 900px) 50vw, 100vw' }}{% endif %}
+            {% if block.settings.image != blank %}
+              {{ block.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600,900,1200,1600', sizes: '(min-width: 900px) 50vw, 100vw' }}
+            {% elsif collection != blank and collection.featured_image != blank %}
+              {{ collection.featured_image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600,900,1200,1600', sizes: '(min-width: 900px) 50vw, 100vw' }}
+            {% elsif block.settings.title contains 'MANDALA' %}
+              <img src="{{ 'placeholder-mandala.svg' | asset_url }}" alt="Visual temporário MANDALA" loading="lazy">
+            {% else %}
+              <img src="{{ 'placeholder-ryujin.svg' | asset_url }}" alt="Visual temporário RYUJIN" loading="lazy">
+            {% endif %}
             <div class="karv-edition__copy">
               <span class="karv-edition__number">0{{ forloop.index }}</span>
               <h3>{% if block.settings.title != blank %}{{ block.settings.title }}{% elsif collection != blank %}{{ collection.title }}{% else %}Edição KARV{% endif %}</h3>
