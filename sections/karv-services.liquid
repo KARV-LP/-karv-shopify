@@ -1,0 +1,16 @@
+<section class="karv-services">
+  <div class="karv-shell karv-services__grid">
+    {% for block in section.blocks %}
+      <div class="karv-service" {{ block.shopify_attributes }}>
+        <div class="karv-service__icon" aria-hidden="true">{{ block.settings.icon }}</div>
+        <div><h3>{{ block.settings.title }}</h3><p>{{ block.settings.text }}</p></div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% stylesheet %}
+.karv-services{border-top:1px solid var(--karv-line);border-bottom:1px solid var(--karv-line);background:#f5f2ec}.karv-services__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}.karv-service{display:flex;gap:16px;padding:24px 20px;border-right:1px solid var(--karv-line)}.karv-service:last-child{border-right:0}.karv-service__icon{font-size:1.35rem;line-height:1}.karv-service h3{font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;margin:0 0 5px}.karv-service p{font-size:.72rem;color:var(--karv-muted);margin:0;line-height:1.4}@media(max-width:900px){.karv-services__grid{grid-template-columns:repeat(2,1fr)}.karv-service:nth-child(2){border-right:0}.karv-service:nth-child(-n+2){border-bottom:1px solid var(--karv-line)}}@media(max-width:560px){.karv-services__grid{grid-template-columns:1fr}.karv-service{border-right:0;border-bottom:1px solid var(--karv-line)}}
+{% endstylesheet %}
+{% schema %}
+{"name":"KARV — Serviços","settings":[],"blocks":[{"type":"service","name":"Serviço","settings":[{"type":"text","id":"icon","label":"Ícone simples","default":"○"},{"type":"text","id":"title","label":"Título","default":"ATENDIMENTO"},{"type":"text","id":"text","label":"Texto","default":"Especializado e humano em todas as etapas."}]}],"max_blocks":4,"presets":[{"name":"KARV — Serviços","blocks":[{"type":"service"},{"type":"service"},{"type":"service"},{"type":"service"}]}]}
+{% endschema %}
