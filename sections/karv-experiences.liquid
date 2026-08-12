@@ -1,0 +1,22 @@
+<section class="karv-experiences karv-shell">
+  <div class="karv-section-label"><span>{{ section.settings.eyebrow }}</span></div>
+  <div class="karv-experiences__grid">
+    {% for block in section.blocks %}
+      <article class="karv-experience" {{ block.shopify_attributes }}>
+        <a href="{{ block.settings.link | default: '#' }}">
+          <div class="karv-experience__media">
+            {% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600,900,1200,1600', sizes: '(min-width: 900px) 50vw, 100vw' }}{% endif %}
+            <div class="karv-experience__shade"></div>
+            <div class="karv-experience__copy"><h3>{{ block.settings.title }}</h3><span>{{ block.settings.cta }} →</span></div>
+          </div>
+        </a>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+{% stylesheet %}
+.karv-experiences{padding-top:8px;padding-bottom:26px}.karv-experiences__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.karv-experience__media{position:relative;aspect-ratio:2.15/1;overflow:hidden;border-radius:6px;background:#ded8cf}.karv-experience__media img{width:100%;height:100%;object-fit:cover;transition:transform .65s ease}.karv-experience__shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.56),rgba(0,0,0,.08) 65%,transparent)}.karv-experience__copy{position:absolute;inset:0;padding:26px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;color:#fff}.karv-experience h3{font-size:clamp(1.3rem,2vw,2rem);font-weight:500;letter-spacing:.06em;margin:0}.karv-experience span{font-size:.78rem;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.7);padding-bottom:3px}.karv-experience:hover img{transform:scale(1.025)}@media(max-width:760px){.karv-experiences__grid{grid-template-columns:1fr}.karv-experience__media{aspect-ratio:1.6/1}}
+{% endstylesheet %}
+{% schema %}
+{"name":"KARV — Experiências","settings":[{"type":"text","id":"eyebrow","label":"Título da seção","default":"EXPERIÊNCIAS KARV"}],"blocks":[{"type":"experience","name":"Experiência","settings":[{"type":"image_picker","id":"image","label":"Imagem"},{"type":"text","id":"title","label":"Título","default":"RYUJIN"},{"type":"text","id":"cta","label":"CTA","default":"EXPLORAR EXPERIÊNCIA"},{"type":"url","id":"link","label":"Link para KARV Core / LP"}]}],"max_blocks":4,"presets":[{"name":"KARV — Experiências","blocks":[{"type":"experience"},{"type":"experience"}]}]}
+{% endschema %}
