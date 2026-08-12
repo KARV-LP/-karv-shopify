@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "hero": {
+      "type": "karv-hero",
+      "settings": {
+        "eyebrow": "KARV · Design autoral",
+        "heading": "Objetos com presença.",
+        "text": "<p>Poltronas concebidas como peças de identidade, matéria e expressão.</p>",
+        "button_label": "Conhecer as edições",
+        "overlay": 40
+      }
+    },
+    "editions": {
+      "type": "karv-editions",
+      "settings": {
+        "eyebrow": "Edições KARV",
+        "heading": "Cada peça, um universo.",
+        "text": "<p>Da loja às experiências editoriais, cada edição mantém sua própria linguagem dentro do ecossistema KARV.</p>"
+      },
+      "blocks": {
+        "edition_1": {"type":"edition","settings":{"kicker":"Edição autoral","title":"RYUJIN"}},
+        "edition_2": {"type":"edition","settings":{"kicker":"Edição autoral","title":"MANDALA"}}
+      },
+      "block_order": ["edition_1", "edition_2"]
+    }
+  },
+  "order": ["hero", "editions"]
+}
