@@ -1,32 +1,34 @@
 <!doctype html>
-<html lang="{{ request.locale.iso_code }}">
+<html class="no-js" lang="{{ request.locale.iso_code }}">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="theme-color" content="#f3f0e9">
     <link rel="canonical" href="{{ canonical_url }}">
-    <title>{% if page_title != blank %}{{ page_title }} · {% endif %}{{ shop.name }}</title>
-    {% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
-    {{ content_for_header }}
-    {{ 'karv-base.css' | asset_url | stylesheet_tag }}
-  </head>
-  <body>
-    <a class="karv-skip" href="#MainContent">Ir para o conteúdo</a>
-    <header class="karv-header">
-      <a class="karv-wordmark" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">KARV</a>
-      <nav class="karv-nav" aria-label="Navegação principal">
-        <a href="{{ routes.all_products_collection_url }}">Coleções</a>
-        <a href="/pages/sobre">KARV</a>
-        <a href="{{ routes.cart_url }}">Carrinho ({{ cart.item_count }})</a>
-      </nav>
-    </header>
 
-    <main id="MainContent" role="main">
+    <title>
+      {{ page_title }}{% if current_tags %} — {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} — Página {{ current_page }}{% endif %}{% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {{ content_for_header }}
+
+    {{ 'karv-base.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'karv-theme.js' | asset_url }}" defer="defer"></script>
+  </head>
+
+  <body class="template-{{ template.name | handle }}">
+    <a class="karv-skip" href="#MainContent">Ir para o conteúdo</a>
+
+    {% sections 'header-group' %}
+
+    <main id="MainContent" class="karv-main" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
 
-    <footer class="karv-footer">
-      <p>KARV — design autoral, matéria e presença.</p>
-      <p>© {{ 'now' | date: '%Y' }} {{ shop.name }}</p>
-    </footer>
+    {% sections 'footer-group' %}
   </body>
 </html>
