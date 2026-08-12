@@ -8,7 +8,13 @@
   <div class="karv-materials__grid">
     {% for block in section.blocks %}
       <article {{ block.shopify_attributes }}>
-        <div class="karv-materials__image">{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400,650,900', sizes: '(min-width: 900px) 20vw, 50vw' }}{% endif %}</div>
+        <div class="karv-materials__image">
+          {% if block.settings.image != blank %}
+            {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400,650,900', sizes: '(min-width: 900px) 20vw, 50vw' }}
+          {% else %}
+            <img src="{{ 'placeholder-material.svg' | asset_url }}" alt="Visual temporário de material KARV" loading="lazy">
+          {% endif %}
+        </div>
         <h3>{{ block.settings.title }}</h3><p>{{ block.settings.caption }}</p>
       </article>
     {% endfor %}
