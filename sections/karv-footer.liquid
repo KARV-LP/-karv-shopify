@@ -1,0 +1,53 @@
+<footer class="karv-site-footer">
+  <div class="karv-site-footer__grid">
+    <div>
+      <p class="karv-site-footer__brand">KARV</p>
+      <p class="karv-site-footer__statement">{{ section.settings.statement }}</p>
+    </div>
+
+    <nav class="karv-site-footer__nav" aria-label="Navegação do rodapé">
+      {% if section.settings.menu != blank %}
+        {% for link in section.settings.menu.links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+      {% endif %}
+    </nav>
+
+    <div class="karv-site-footer__meta">
+      {% if section.settings.contact != blank %}
+        <a href="{{ section.settings.contact_url }}">{{ section.settings.contact }}</a>
+      {% endif %}
+      <span>© {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer KARV",
+  "settings": [
+    {
+      "type": "text",
+      "id": "statement",
+      "label": "Assinatura",
+      "default": "Design autoral, matéria e presença."
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu do rodapé"
+    },
+    {
+      "type": "text",
+      "id": "contact",
+      "label": "Texto de contato",
+      "default": "Fale com a KARV"
+    },
+    {
+      "type": "url",
+      "id": "contact_url",
+      "label": "Link de contato"
+    }
+  ]
+}
+{% endschema %}
