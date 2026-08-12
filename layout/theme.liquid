@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <title>{% if page_title != blank %}{{ page_title }} · {% endif %}{{ shop.name }}</title>
+    {% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+    {{ content_for_header }}
+    {{ 'karv-base.css' | asset_url | stylesheet_tag }}
+  </head>
+  <body>
+    <a class="karv-skip" href="#MainContent">Ir para o conteúdo</a>
+    <header class="karv-header">
+      <a class="karv-wordmark" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">KARV</a>
+      <nav class="karv-nav" aria-label="Navegação principal">
+        <a href="{{ routes.all_products_collection_url }}">Coleções</a>
+        <a href="/pages/sobre">KARV</a>
+        <a href="{{ routes.cart_url }}">Carrinho ({{ cart.item_count }})</a>
+      </nav>
+    </header>
+
+    <main id="MainContent" role="main">
+      {{ content_for_layout }}
+    </main>
+
+    <footer class="karv-footer">
+      <p>KARV — design autoral, matéria e presença.</p>
+      <p>© {{ 'now' | date: '%Y' }} {{ shop.name }}</p>
+    </footer>
+  </body>
+</html>
