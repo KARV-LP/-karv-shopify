@@ -2,6 +2,8 @@
   <div class="karv-hero__frame">
     {% if section.settings.image != blank %}
       {{ section.settings.image | image_url: width: 2400 | image_tag: class: 'karv-hero__media', loading: 'eager', widths: '750,1100,1500,2000,2400', sizes: '100vw' }}
+    {% else %}
+      <img class="karv-hero__media" src="{{ 'placeholder-hero.svg' | asset_url }}" alt="Visual temporário da Hero KARV" loading="eager">
     {% endif %}
     <div class="karv-hero__wash"></div>
     <div class="karv-hero__rail" aria-hidden="true"><span>01</span><span>02</span><span>03</span><span>04</span></div>
