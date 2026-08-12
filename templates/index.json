@@ -1,11 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "hero": {"type":"karv-hero","settings":{"eyebrow":"KARV DESIGN","heading":"DESIGN QUE CARREGA HISTÓRIAS.","text":"<p>Poltronas autorais construídas através de forma, material e identidade.</p>","button_label":"CONHEÇA AS EDIÇÕES"}},
-    "editions": {"type":"karv-editions","settings":{"eyebrow":"EDIÇÕES AUTORAIS"},"blocks":{"ryujin":{"type":"edition","settings":{"title":"RYUJIN","text":"<p>Força que habita o que é verdadeiro.</p>"}},"mandala":{"type":"edition","settings":{"title":"MANDALA","text":"<p>Símbolos que transcendem. Formas que conectam.</p>"}}},"block_order":["ryujin","mandala"]},
-    "materials": {"type":"karv-materials","settings":{"eyebrow":"FORMA, MATERIAL E EXPRESSÃO.","heading":"Cada detalhe importa.","text":"<p>Materiais selecionados, acabamentos precisos e costuras que revelam cuidado em cada ângulo.</p>","link_label":"EXPLORAR MATERIAIS"},"blocks":{"finish":{"type":"material","settings":{"title":"ACABAMENTOS","caption":"Precisão que se sente."}},"material":{"type":"material","settings":{"title":"MATERIAL","caption":"Texturas que contam histórias."}},"design":{"type":"material","settings":{"title":"DESIGN AUTORAL","caption":"Formas que carregam significado."}},"identity":{"type":"material","settings":{"title":"IDENTIDADE","caption":"Mais que estética, é essência."}}},"block_order":["finish","material","design","identity"]},
-    "universe": {"type":"karv-universe","settings":{"eyebrow":"UNIVERSO KARV","heading":"MAIS QUE POLTRONAS. SUPORTES PARA IDEIAS, ATITUDES E CULTURA.","text":"<p>A KARV transforma design em expressão. Cada edição carrega referências, histórias e intenções que ganham vida nas formas e nos materiais.</p>","link_label":"CONHEÇA NOSSO UNIVERSO"}},
-    "experiences": {"type":"karv-experiences","settings":{"eyebrow":"EXPERIÊNCIAS KARV"},"blocks":{"exp_ryujin":{"type":"experience","settings":{"title":"RYUJIN","cta":"EXPLORAR EXPERIÊNCIA"}},"exp_mandala":{"type":"experience","settings":{"title":"MANDALA","cta":"EXPLORAR EXPERIÊNCIA"}}},"block_order":["exp_ryujin","exp_mandala"]},
-    "services": {"type":"karv-services","settings":{},"blocks":{"attendance":{"type":"service","settings":{"icon":"◯","title":"ATENDIMENTO","text":"Especializado e humano em todas as etapas."}},"production":{"type":"service","settings":{"icon":"△","title":"PRODUÇÃO","text":"Processos cuidadosos para resultados únicos."}},"delivery":{"type":"service","settings":{"icon":"□","title":"ENTREGA","text":"Segurança e pontualidade para todo o Brasil."}},"payment":{"type":"service","settings":{"icon":"◇","title":"PAGAMENTO SEGURO","text":"Ambiente protegido e confiável."}}},"block_order":["attendance","production","delivery","payment"]}
+    "hero": {
+      "type": "karv-hero",
+      "settings": {
+        "eyebrow": "KARV DESIGN",
+        "heading": "Poltrona exclusiva para seu ambiente exclusivo.",
+        "text": "<p>*Inovação / Comforto / Autenticidade e Identidade Visual.</p>",
+        "button_label": "CONHEÇA AS EDIÇÕES",
+        "button_link": ""
+      }
+    },
+    "editions": {
+      "type": "karv-editions",
+      "blocks": {
+        "ryujin": {
+          "type": "edition",
+          "settings": {
+            "collection": "",
+            "title": "RYUJIN",
+            "text": "<p>Força que habita o que é verdadeiro.</p>",
+            "link": ""
+          }
+        },
+        "mandala": {
+          "type": "edition",
+          "settings": {
+            "collection": "",
+            "title": "MANDALA",
+            "text": "<p>Símbolos que transcendem. Formas que conectam.</p>",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "ryujin",
+        "mandala"
+      ],
+      "settings": {
+        "eyebrow": "EDIÇÕES AUTORAIS"
+      }
+    },
+    "materials": {
+      "type": "karv-materials",
+      "blocks": {
+        "finish": {
+          "type": "material",
+          "settings": {
+            "title": "ACABAMENTOS",
+            "caption": "Precisão que se sente."
+          }
+        },
+        "material": {
+          "type": "material",
+          "settings": {
+            "title": "MATERIAL",
+            "caption": "Texturas que contam histórias."
+          }
+        },
+        "design": {
+          "type": "material",
+          "settings": {
+            "title": "DESIGN AUTORAL",
+            "caption": "Formas que carregam significado."
+          }
+        },
+        "identity": {
+          "type": "material",
+          "settings": {
+            "title": "IDENTIDADE",
+            "caption": "Mais que estética, é essência."
+          }
+        }
+      },
+      "block_order": [
+        "finish",
+        "material",
+        "design",
+        "identity"
+      ],
+      "settings": {
+        "eyebrow": "FORMA, MATERIAL E EXPRESSÃO.",
+        "heading": "Cada detalhe importa.",
+        "text": "<p>Materiais selecionados, acabamentos precisos e costuras que revelam cuidado em cada ângulo.</p>",
+        "link_label": "EXPLORAR MATERIAIS",
+        "link": ""
+      }
+    },
+    "universe": {
+      "type": "karv-universe",
+      "settings": {
+        "eyebrow": "UNIVERSO KARV",
+        "heading": "MAIS QUE POLTRONAS. SUPORTES PARA IDEIAS, ATITUDES E CULTURA.",
+        "text": "<p>A KARV transforma design em expressão. Cada edição carrega referências, histórias e intenções que ganham vida nas formas e nos materiais.</p>",
+        "link_label": "CONHEÇA NOSSO UNIVERSO",
+        "link": ""
+      }
+    },
+    "experiences": {
+      "type": "karv-experiences",
+      "blocks": {
+        "exp_ryujin": {
+          "type": "experience",
+          "settings": {
+            "title": "RYUJIN",
+            "cta": "EXPLORAR EXPERIÊNCIA",
+            "link": ""
+          }
+        },
+        "exp_mandala": {
+          "type": "experience",
+          "settings": {
+            "title": "MANDALA",
+            "cta": "EXPLORAR EXPERIÊNCIA",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "exp_ryujin",
+        "exp_mandala"
+      ],
+      "settings": {
+        "eyebrow": "EXPERIÊNCIAS KARV"
+      }
+    },
+    "services": {
+      "type": "karv-services",
+      "blocks": {
+        "attendance": {
+          "type": "service",
+          "settings": {
+            "icon": "◯",
+            "title": "ATENDIMENTO",
+            "text": "Especializado e humano em todas as etapas."
+          }
+        },
+        "production": {
+          "type": "service",
+          "settings": {
+            "icon": "△",
+            "title": "PRODUÇÃO",
+            "text": "Processos cuidadosos para resultados únicos."
+          }
+        },
+        "delivery": {
+          "type": "service",
+          "settings": {
+            "icon": "□",
+            "title": "ENTREGA",
+            "text": "Segurança e pontualidade para todo o Brasil."
+          }
+        },
+        "payment": {
+          "type": "service",
+          "settings": {
+            "icon": "◇",
+            "title": "PAGAMENTO SEGURO",
+            "text": "Ambiente protegido e confiável."
+          }
+        }
+      },
+      "block_order": [
+        "attendance",
+        "production",
+        "delivery",
+        "payment"
+      ],
+      "settings": {}
+    }
   },
-  "order": ["hero","editions","materials","universe","experiences","services"]
+  "order": [
+    "hero",
+    "editions",
+    "materials",
+    "universe",
+    "experiences",
+    "services"
+  ]
 }
