@@ -12,8 +12,9 @@
     "hero": {
       "type": "karv-hero",
       "settings": {
+        "image": "shopify://shop_images/grok-image-98844737-16a7-463e-b3ed-eab218a62913.jpg",
         "eyebrow": "KARV DESIGN",
-        "heading": "Poltrona exclusiva para seu ambiente exclusivo.",
+        "heading": "Poltrona exclusiva para ambiente exclusivo.",
         "text": "<p>*Inovação / Comforto / Autenticidade e Identidade Visual.</p>",
         "button_label": "CONHEÇA AS EDIÇÕES",
         "button_link": ""
