@@ -1,3 +1,27 @@
+{% if section.settings.show_intro %}
+  <div class="karv-intro" data-karv-intro aria-label="Abertura KARV">
+    {% if section.settings.intro_video_url != blank %}
+      <video
+        class="karv-intro__video"
+        autoplay
+        muted
+        playsinline
+        preload="auto"
+        aria-hidden="true"
+        data-karv-intro-video
+      >
+        <source src="{{ section.settings.intro_video_url | escape }}" type="video/mp4">
+      </video>
+    {% endif %}
+    <div class="karv-intro__brand" aria-hidden="true">
+      <span class="karv-intro__line"></span>
+      <span class="karv-intro__wordmark">KARV</span>
+      <span class="karv-intro__line"></span>
+    </div>
+    <button class="karv-intro__skip" type="button" data-karv-intro-skip>Pular abertura</button>
+  </div>
+{% endif %}
+
 <section class="karv-hero karv-shell">
   <div class="karv-hero__frame">
     {% if section.settings.image != blank %}
@@ -19,9 +43,68 @@
 </section>
 
 {% stylesheet %}
-.karv-hero{padding-top:18px}.karv-hero__frame{position:relative;min-height:620px;overflow:hidden;border-radius:6px;background:#e9e3da}.karv-hero__media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.karv-hero__wash{position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,243,237,.96) 0%,rgba(246,243,237,.78) 38%,rgba(246,243,237,.08) 67%,rgba(246,243,237,0) 100%)}.karv-hero__content{position:relative;z-index:2;max-width:650px;padding:150px 56px 88px 120px}.karv-hero h1{margin:18px 0 22px;font-size:clamp(3rem,5.3vw,6rem);line-height:.98;letter-spacing:-.045em;font-weight:500}.karv-hero__text{max-width:480px;font-size:1.08rem;margin-bottom:28px}.karv-hero__rail{position:absolute;z-index:2;left:34px;top:170px;display:flex;flex-direction:column;gap:22px;font-size:.7rem;color:#777}.karv-hero__rail:after{content:'';position:absolute;left:9px;top:24px;width:1px;height:118px;background:rgba(0,0,0,.16)}.karv-button--dark{background:#151515;color:#fff;border-color:#151515;gap:18px}@media(max-width:760px){.karv-hero{padding-top:8px}.karv-hero__frame{min-height:680px}.karv-hero__wash{background:linear-gradient(180deg,rgba(246,243,237,.96) 0%,rgba(246,243,237,.8) 48%,rgba(246,243,237,.08) 78%)}.karv-hero__content{padding:64px 24px}.karv-hero__rail{display:none}.karv-hero h1{font-size:clamp(3rem,13vw,5rem)}}
+.karv-intro{position:fixed;z-index:9999;inset:0;display:grid;place-items:center;overflow:hidden;background:#e9e3da;color:#151515;opacity:1;visibility:visible;transition:opacity .72s ease,visibility .72s step-end}
+.karv-intro.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
+.karv-intro__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.karv-intro:has(.karv-intro__video) .karv-intro__brand{color:#fff;text-shadow:0 1px 16px rgba(0,0,0,.3)}
+.karv-intro__brand{position:relative;z-index:1;display:flex;align-items:center;gap:16px;letter-spacing:.24em}
+.karv-intro__wordmark{font-size:clamp(2.4rem,7vw,6.5rem);font-weight:600;line-height:1}
+.karv-intro__line{width:clamp(34px,7vw,90px);height:1px;background:currentColor;opacity:.75}
+.karv-intro__skip{position:absolute;z-index:2;right:24px;bottom:22px;padding:0;border:0;background:transparent;color:inherit;font:inherit;font-size:.72rem;letter-spacing:.08em;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.karv-hero{padding-top:18px}.karv-hero__frame{position:relative;min-height:620px;overflow:hidden;border-radius:6px;background:#e9e3da}.karv-hero__media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.karv-hero__wash{position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,243,237,.96) 0%,rgba(246,243,237,.78) 38%,rgba(246,243,237,.08) 67%,rgba(246,243,237,0) 100%)}.karv-hero__content{position:relative;z-index:2;max-width:650px;padding:150px 56px 88px 120px}.karv-hero h1{margin:18px 0 22px;font-size:clamp(3rem,5.3vw,6rem);line-height:.98;letter-spacing:-.045em;font-weight:500}.karv-hero__text{max-width:480px;font-size:1.08rem;margin-bottom:28px}.karv-hero__rail{position:absolute;z-index:2;left:34px;top:170px;display:flex;flex-direction:column;gap:22px;font-size:.7rem;color:#777}.karv-hero__rail:after{content:'';position:absolute;left:9px;top:24px;width:1px;height:118px;background:rgba(0,0,0,.16)}.karv-button--dark{background:#151515;color:#fff;border-color:#151515;gap:18px}@media(max-width:760px){.karv-intro__skip{right:16px;bottom:16px}.karv-hero{padding-top:8px}.karv-hero__frame{min-height:680px}.karv-hero__wash{background:linear-gradient(180deg,rgba(246,243,237,.96) 0%,rgba(246,243,237,.8) 48%,rgba(246,243,237,.08) 78%)}.karv-hero__content{padding:64px 24px}.karv-hero__rail{display:none}.karv-hero h1{font-size:clamp(3rem,13vw,5rem)}}@media(prefers-reduced-motion:reduce){.karv-intro{display:none}}
 {% endstylesheet %}
 
+{% if section.settings.show_intro %}
+  <script>
+    (() => {
+      const initializeIntro = () => {
+        const intro = document.querySelector('[data-karv-intro]');
+        if (!intro || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const storageKey = 'karvHeroIntroSeen';
+        try {
+          if (sessionStorage.getItem(storageKey)) {
+            intro.remove();
+            return;
+          }
+          sessionStorage.setItem(storageKey, 'true');
+        } catch (error) {}
+
+        let finished = false;
+        const finish = () => {
+          if (finished) return;
+          finished = true;
+          intro.classList.add('is-leaving');
+          window.setTimeout(() => intro.remove(), 760);
+        };
+
+        const video = intro.querySelector('[data-karv-intro-video]');
+        const fallbackTimer = window.setTimeout(finish, 3600);
+
+        if (video) {
+          video.addEventListener('ended', () => {
+            window.clearTimeout(fallbackTimer);
+            finish();
+          }, { once: true });
+          video.addEventListener('error', () => {
+            window.clearTimeout(fallbackTimer);
+            finish();
+          }, { once: true });
+        }
+
+        intro.querySelector('[data-karv-intro-skip]')?.addEventListener('click', () => {
+          window.clearTimeout(fallbackTimer);
+          finish();
+        }, { once: true });
+      };
+
+      document.readyState === 'loading'
+        ? document.addEventListener('DOMContentLoaded', initializeIntro, { once: true })
+        : initializeIntro();
+    })();
+  </script>
+{% endif %}
+
 {% schema %}
-{"name":"KARV — Hero","settings":[{"type":"image_picker","id":"image","label":"Imagem principal"},{"type":"text","id":"eyebrow","label":"Linha superior","default":"KARV DESIGN"},{"type":"text","id":"heading","label":"Título","default":"DESIGN QUE CARREGA HISTÓRIAS."},{"type":"richtext","id":"text","label":"Texto","default":"<p>Poltronas autorais construídas através de forma, material e identidade.</p>"},{"type":"text","id":"button_label","label":"Texto do botão","default":"CONHEÇA AS EDIÇÕES"},{"type":"url","id":"button_link","label":"Link do botão"}],"presets":[{"name":"KARV — Hero"}]}
+{"name":"KARV — Hero","settings":[{"type":"checkbox","id":"show_intro","label":"Exibir abertura KARV","default":true},{"type":"url","id":"intro_video_url","label":"URL do vídeo de abertura (MP4)"},{"type":"image_picker","id":"image","label":"Imagem principal"},{"type":"text","id":"eyebrow","label":"Linha superior","default":"KARV DESIGN"},{"type":"text","id":"heading","label":"Título","default":"DESIGN QUE CARREGA HISTÓRIAS."},{"type":"richtext","id":"text","label":"Texto","default":"<p>Poltronas autorais construídas através de forma, material e identidade.</p>"},{"type":"text","id":"button_label","label":"Texto do botão","default":"CONHEÇA AS EDIÇÕES"},{"type":"url","id":"button_link","label":"Link do botão"}],"presets":[{"name":"KARV — Hero"}]}
 {% endschema %}
