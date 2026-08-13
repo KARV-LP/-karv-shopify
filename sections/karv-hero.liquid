@@ -1,17 +1,7 @@
 {% if section.settings.show_intro %}
   <div class="karv-intro" data-karv-intro aria-label="Abertura KARV">
-    {% if section.settings.intro_video_url != blank %}
-      <video
-        class="karv-intro__video"
-        autoplay
-        muted
-        playsinline
-        preload="auto"
-        aria-hidden="true"
-        data-karv-intro-video
-      >
-        <source src="{{ section.settings.intro_video_url | escape }}" type="video/mp4">
-      </video>
+    {% if section.settings.intro_video != blank %}
+      {{ section.settings.intro_video | video_tag: autoplay: true, muted: true, playsinline: true, preload: 'auto', class: 'karv-intro__video' }}
     {% endif %}
     <div class="karv-intro__brand" aria-hidden="true">
       <span class="karv-intro__line"></span>
@@ -78,7 +68,7 @@
           window.setTimeout(() => intro.remove(), 760);
         };
 
-        const video = intro.querySelector('[data-karv-intro-video]');
+        const video = intro.querySelector('.karv-intro__video');
         const fallbackTimer = window.setTimeout(finish, 3600);
 
         if (video) {
@@ -106,5 +96,5 @@
 {% endif %}
 
 {% schema %}
-{"name":"KARV — Hero","settings":[{"type":"checkbox","id":"show_intro","label":"Exibir abertura KARV","default":true},{"type":"url","id":"intro_video_url","label":"URL do vídeo de abertura (MP4)"},{"type":"image_picker","id":"image","label":"Imagem principal"},{"type":"text","id":"eyebrow","label":"Linha superior","default":"KARV DESIGN"},{"type":"text","id":"heading","label":"Título","default":"DESIGN QUE CARREGA HISTÓRIAS."},{"type":"richtext","id":"text","label":"Texto","default":"<p>Poltronas autorais construídas através de forma, material e identidade.</p>"},{"type":"text","id":"button_label","label":"Texto do botão","default":"CONHEÇA AS EDIÇÕES"},{"type":"url","id":"button_link","label":"Link do botão"}],"presets":[{"name":"KARV — Hero"}]}
+{"name":"KARV — Hero","settings":[{"type":"checkbox","id":"show_intro","label":"Exibir abertura KARV","default":true},{"type":"video","id":"intro_video","label":"Vídeo de abertura"},{"type":"image_picker","id":"image","label":"Imagem principal"},{"type":"text","id":"eyebrow","label":"Linha superior","default":"KARV DESIGN"},{"type":"text","id":"heading","label":"Título","default":"DESIGN QUE CARREGA HISTÓRIAS."},{"type":"richtext","id":"text","label":"Texto","default":"<p>Poltronas autorais construídas através de forma, material e identidade.</p>"},{"type":"text","id":"button_label","label":"Texto do botão","default":"CONHEÇA AS EDIÇÕES"},{"type":"url","id":"button_link","label":"Link do botão"}],"presets":[{"name":"KARV — Hero"}]}
 {% endschema %}
