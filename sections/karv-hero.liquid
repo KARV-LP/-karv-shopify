@@ -31,8 +31,8 @@
 </section>
 
 {% stylesheet %}
-.karv-intro{position:fixed;z-index:9999;inset:0;display:grid;place-items:center;overflow:hidden;background:#e9e3da;color:#151515;opacity:1;visibility:visible;transition:opacity .72s ease,visibility .72s step-end}
-.karv-intro.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
+.karv-intro{position:fixed;z-index:9999;inset:0;display:grid;place-items:center;overflow:hidden;background:#e9e3da;color:#151515;opacity:1;visibility:visible;transform:scale(1);filter:blur(0);transition:opacity 1.2s cubic-bezier(.22,1,.36,1),transform 1.2s cubic-bezier(.22,1,.36,1),filter 1.2s ease,visibility 1.2s step-end}
+.karv-intro.is-leaving{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.025);filter:blur(3px)}
 .karv-intro__poster,.karv-intro__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .karv-intro__poster{opacity:1;transition:opacity .35s ease}
 .karv-intro__video{opacity:0;transition:opacity .35s ease}
@@ -54,7 +54,7 @@
           if (finished) return;
           finished = true;
           intro.classList.add('is-leaving');
-          window.setTimeout(() => intro.remove(), 760);
+          window.setTimeout(() => intro.remove(), 1220);
         };
 
         const video = intro.querySelector('.karv-intro__video');
