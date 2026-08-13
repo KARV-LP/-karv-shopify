@@ -51,15 +51,6 @@
         const intro = document.querySelector('[data-karv-intro]');
         if (!intro || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-        const storageKey = 'karvHeroIntroSeen';
-        try {
-          if (sessionStorage.getItem(storageKey)) {
-            intro.remove();
-            return;
-          }
-          sessionStorage.setItem(storageKey, 'true');
-        } catch (error) {}
-
         let finished = false;
         const finish = () => {
           if (finished) return;
