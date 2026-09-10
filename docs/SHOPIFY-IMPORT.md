@@ -1,44 +1,44 @@
 # Importação do tema Shopify — KARV
 
-## Objetivo
-Trazer uma cópia do tema atualmente usado em `k-arv.com` para este repositório sem alterar o tema publicado.
+## Status
 
-## Regra
-- Produção permanece intacta.
-- O tema importado deve entrar primeiro em branch de trabalho.
-- `main` continua sendo a referência estável.
-- Nenhuma alteração visual deve ser implementada antes da auditoria da cópia real do tema.
+**Concluída em 2026-09-10.**
 
-## Branch de trabalho
-`feat/karv-homepage-redesign`
+O tema publicado `Cópia de Dawn` foi lido pela Shopify Admin API sem qualquer alteração em produção e versionado no GitHub.
 
-## Estrutura esperada do tema
+## Referência
+
+- Loja: `loja.k-arv.com`
+- Tema de origem: `Cópia de Dawn` — função `MAIN`
+- Branch do snapshot: `audit/shopify-production-2026-09-10`
+- Commit: `36bb90d22356ed61578ed5e79c43417f29083bc7`
+- Total: 367 arquivos / 4.639.974 bytes
+- Validação: 0 arquivos faltantes e 0 arquivos extras
+
+## Estrutura importada
+
 ```text
-assets/
-config/
-layout/
-locales/
-sections/
-snippets/
-templates/
+assets/      185 arquivos
+config/        2 arquivos
+layout/        3 arquivos
+locales/      51 arquivos
+sections/     61 arquivos
+snippets/     39 arquivos
+templates/    26 arquivos
 ```
 
-## Processo recomendado
-1. Duplicar o tema atualmente publicado dentro da Shopify.
-2. Conectar a cópia não publicada ao repositório `KARV-LP/-karv-shopify`.
-3. Usar a branch `feat/karv-homepage-redesign` para a sincronização inicial.
-4. Confirmar que os diretórios padrão do tema foram recebidos no GitHub.
-5. Auditar integrações, apps, scripts, pixels, analytics e customizações existentes.
-6. Só depois iniciar o redesign da homepage.
+## Uso da branch
 
-## Validação de entrada
-A importação está concluída quando o repositório contém o código real do tema e, no mínimo, os diretórios `layout`, `templates`, `sections`, `snippets`, `assets`, `config` e `locales`.
+A branch do snapshot é uma referência histórica do tema publicado. Não deve ser mesclada diretamente sobre `main`, pois `main` contém a evolução do novo tema KARV.
 
-## Pós-importação
-- mapear `theme.liquid`;
-- mapear `index.json`/template da homepage;
-- identificar sections globais;
-- identificar dependências de apps;
-- identificar scripts e tracking;
-- definir componentes preservados, substituídos e novos;
-- preparar primeira proposta do novo `k-arv.com`.
+Comparações e migrações devem selecionar conscientemente os componentes preservados, substituídos ou novos.
+
+## Segurança
+
+- produção não foi alterada;
+- nenhuma publicação foi realizada;
+- nenhum tema foi excluído ou substituído;
+- o tema KARV `-karv-shopify/main` permanece `UNPUBLISHED`;
+- publicação futura depende de validação e aprovação explícita da KARV.
+
+A auditoria completa está em `docs/PHASE-1-AUDIT.md`.
