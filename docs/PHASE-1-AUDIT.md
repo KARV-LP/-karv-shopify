@@ -1,86 +1,125 @@
 # Auditoria Shopify — Fase 1
 
-Data da auditoria: 2026-09-10  
-Repositório: `KARV-LP/-karv-shopify`  
-Branch-base auditada: `main`  
-Commit-base: `8e3e4accd8c2399716efb4ba664861a0d8083a2c`
-
-## Objetivo
-
-Verificar se o repositório contém uma cópia completa e auditável do tema Shopify usado em `k-arv.com`, sem alterar o tema publicado.
+Data de conclusão: 2026-09-10  
+Loja: **KARV — `loja.k-arv.com`**  
+Repositório: `KARV-LP/-karv-shopify`
 
 ## Resultado
 
-**Fase 1 ainda não pode ser declarada concluída.**
+**Fase 1 concluída.**
 
-O repositório contém uma base funcional de homepage criada para a KARV, mas não contém uma cópia integral comprovada do tema publicado. A estrutura atual não atende ao critério de entrada definido em `docs/SHOPIFY-IMPORT.md`.
+O tema publicado foi identificado pela Shopify Admin API, exportado integralmente em modo somente leitura, versionado em uma branch isolada e conferido contra a origem. Nenhuma alteração foi feita no tema publicado.
 
-Nenhuma alteração foi feita na loja ou no tema em produção durante esta auditoria.
+## Tema de origem
 
-## Estrutura encontrada
+| Campo | Valor |
+|---|---|
+| Nome | `Cópia de Dawn` |
+| Função | `MAIN` — tema publicado |
+| Shopify Theme Store ID | `887` — Dawn |
+| Atualizado em | `2026-07-07T20:48:56Z` |
+| ID Shopify | `gid://shopify/OnlineStoreTheme/147402457158` |
 
-| Diretório/arquivo | Estado | Observação |
+## Snapshot versionado
+
+| Campo | Valor |
+|---|---|
+| Branch | `audit/shopify-production-2026-09-10` |
+| Commit | `36bb90d22356ed61578ed5e79c43417f29083bc7` |
+| Arquivos | 367 |
+| Tamanho informado pela Shopify | 4.639.974 bytes |
+| Arquivos faltantes | 0 |
+| Arquivos extras | 0 |
+
+A branch do snapshot representa exclusivamente o código do tema publicado. Ela **não deve ser mesclada diretamente** sobre `main`; serve como referência histórica e base de comparação.
+
+## Estrutura validada
+
+| Diretório | Arquivos |
+|---|---:|
+| `assets/` | 185 |
+| `config/` | 2 |
+| `layout/` | 3 |
+| `locales/` | 51 |
+| `sections/` | 61 |
+| `snippets/` | 39 |
+| `templates/` | 26 |
+| **Total** | **367** |
+
+A estrutura integral exigida para um tema Shopify foi confirmada.
+
+## Temas encontrados na loja
+
+| Nome | Função | Observação |
 |---|---|---|
-| `assets/` | Presente | CSS, JavaScript e placeholders KARV |
-| `config/` | Presente | `settings_schema.json` e `settings_data.json` mínimos |
-| `layout/` | Presente | Apenas `theme.liquid` |
-| `sections/` | Presente | Header, footer e seis seções da homepage KARV |
-| `templates/` | Presente | Apenas `index.json` |
-| `snippets/` | Ausente | Obrigatório para validar uma importação integral |
-| `locales/` | Ausente | Obrigatório para validar uma importação integral |
-| Templates de produto, coleção, carrinho, páginas, busca e políticas | Ausentes | Recursos nativos não podem ser validados pelo código atual |
+| `Cópia de Dawn` | `MAIN` | Tema publicado e origem do snapshot |
+| `shogun-preview-devtheme` | `DEVELOPMENT` | Tema de desenvolvimento do Shogun |
+| `Cópia de Cópia de Dawn` | `UNPUBLISHED` | Três cópias não publicadas existentes |
+| `-karv-shopify/main` | `UNPUBLISHED` | Tema KARV conectado ao repositório e mantido fora de produção |
 
-## Branches verificadas
+## Apps instalados
 
-Foram verificadas:
+| App | Desenvolvedor | Papel identificado | Relação com o tema |
+|---|---|---|---|
+| Messaging | Shopify | Atendimento/chat | Embed ativo do Shopify Inbox em `config/settings_data.json` |
+| Shogun Landing Page Builder | Shogun Labs | Páginas editoriais | Dependência direta: layouts, sections, snippets e templates Shogun |
+| Mercado Pago Cartões | Mercado Pago | Pagamento | Integração operacional; nenhuma referência explícita encontrada no código do tema |
+| Canva Connect | Seguno | Conteúdo/mídia | Administração; nenhuma referência explícita encontrada no código do tema |
+| Lalamove E-Commerce Connector | Lalamove | Entrega | Integração operacional; nenhuma referência explícita encontrada no código do tema |
+| Frenet | Frenet | Frete | Integração operacional; nenhuma referência explícita encontrada no código do tema |
+| KARV — KV_001 Oriental | KARV | Experiência autoral | Template `templates/page.kv001-oriental.liquid` presente |
+| Photoroom | Photoroom SAS | Tratamento de mídia | Administração; nenhuma referência explícita encontrada no código do tema |
+| KARV — Dragon Heritage | KARV | Experiência autoral | App instalado; nenhuma referência explícita pelo handle encontrada no snapshot |
+| SMART Discounts | E-TRADE PARTNER | Descontos | Embed ativo e widget em `templates/product.json` |
+| Shopify ChatGPT MCP App | Shopify | Integração administrativa | Usado para esta auditoria; sem dependência de renderização identificada |
 
-- `main`;
-- `feat/karv-homepage-redesign`;
-- todas as branches `agent/*` existentes.
+## Scripts, pixels e analytics
 
-Nenhuma delas contém `snippets/` ou `locales/`, e nenhuma apresenta uma estrutura completa do tema publicado.
+### Encontrado no código
 
-## Elementos globais identificados
+- `{{ content_for_header }}` permanece nos layouts e deve ser preservado;
+- assets JavaScript nativos do Dawn;
+- integração Shogun por includes/renders próprios;
+- Spline Viewer carregado por `https://unpkg.com/@splinetool/viewer@1.12.97/build/spline-viewer.js`;
+- Shopify Inbox e SMART Discounts configurados como app embeds/blocos.
 
-- `layout/theme.liquid`: estrutura HTML global, canonical, `content_for_header`, CSS e JavaScript do tema;
-- `sections/header-group.json` e `sections/karv-header.liquid`: header, menu e acesso ao carrinho;
-- `sections/footer-group.json` e `sections/karv-footer.liquid`: rodapé e contato;
-- `templates/index.json`: composição exclusiva da homepage;
-- `assets/karv-base.css`: sistema visual;
-- `assets/karv-theme.js`: interação do menu.
+### Não encontrado no código dos 367 arquivos
 
-Esses elementos devem ser preservados como referência do redesign, mas não substituem a auditoria da cópia real do tema publicado.
+- Google Tag Manager;
+- Google Analytics/`gtag`;
+- Meta/Facebook Pixel/`fbq`;
+- TikTok Pixel/`ttq`.
 
-## Apps, scripts, pixels e analytics
+### Limitação documentada
 
-Na base atual:
+A conexão administrativa disponível não possui escopo para enumerar `scriptTags`, Web Pixels ou Server Pixels gerenciados fora do código do tema. Portanto, scripts ou pixels injetados dinamicamente pela Shopify e por apps continuam possíveis através de `content_for_header`.
 
-- não foram encontrados pixels explícitos;
-- não foram encontradas tags explícitas de Google Analytics/GA4;
-- não foram encontrados blocos ou embeds explícitos de apps;
-- não foram encontrados scripts externos explícitos além dos assets do próprio tema;
-- `{{ content_for_header }}` permanece presente e pode receber scripts administrados pela Shopify ou por apps em tempo de execução.
+Esta limitação não impede o versionamento do tema, mas exige nova conferência de Customer Events, pixels e app embeds antes da publicação da Fase 7.
 
-Conclusão: a ausência desses itens no código atual **não comprova** que a loja publicada não os utilize. A confirmação depende da cópia real do tema e da inspeção da configuração da loja/apps.
+## Elementos globais que não podem ser quebrados
 
-## Estado dos itens da Fase 1
+- `layout/theme.liquid`, `layout/password.liquid` e `layout/theme.shogun.landing.liquid`;
+- `content_for_header` e `content_for_layout`;
+- header, announcement bar, footer e grupos globais;
+- templates de produto, coleção, carrinho, busca, páginas, clientes, políticas e gift card;
+- cart drawer, variant picker, compra, preço, disponibilidade e pesquisa preditiva;
+- includes, layouts e templates Shogun;
+- embeds do Shopify Inbox e SMART Discounts;
+- integração de produto com Spline via `product.metafields.custom.spline_url`;
+- integrações comerciais de pagamento, frete e entrega instaladas na loja.
 
-- [ ] Exportar/obter uma cópia do tema Shopify atualmente publicado.
-- [x] Versionar o trabalho existente em repositório Shopify dedicado.
-- [ ] Mapear integralmente `layout/`, `templates/`, `sections/`, `snippets/`, `assets/`, `config/` e `locales/`.
-- [ ] Mapear apps, scripts, pixels, analytics e integrações da loja publicada.
-- [x] Identificar os elementos globais presentes na base atual.
-- [x] Preservar produção: nenhuma alteração foi feita no tema publicado nesta auditoria.
+## Checklist da Fase 1
 
-## Único caminho para concluir a Fase 1
+- [x] Exportar/obter uma cópia do tema Shopify atualmente publicado.
+- [x] Versionar o tema em estrutura GitHub apropriada para Shopify.
+- [x] Mapear `layout/`, `templates/`, `sections/`, `snippets/`, `assets/`, `config/` e `locales/`.
+- [x] Mapear apps, scripts, pixels, analytics e integrações existentes, com a limitação de escopo registrada.
+- [x] Identificar elementos globais que não podem ser quebrados.
+- [x] Não alterar diretamente o tema publicado.
 
-1. Duplicar o tema atualmente publicado no admin Shopify.
-2. Conectar ou exportar essa cópia não publicada.
-3. Importar o código real em branch dedicada, sem sobrescrever `main` diretamente.
-4. Confirmar os sete diretórios padrão e os templates comerciais.
-5. Reexecutar a auditoria de integrações e elementos globais.
-6. Atualizar este documento com o commit da importação e marcar a Fase 1 como concluída.
+## Decisão para as próximas fases
 
-## Regra de segurança
-
-Não criar `snippets/`, `locales/` ou templates fictícios apenas para satisfazer a estrutura. A Fase 1 será concluída somente com a cópia real e auditada do tema Shopify.
+- O snapshot de produção permanece imutável na branch `audit/shopify-production-2026-09-10`.
+- O desenvolvimento KARV continua no tema não publicado `-karv-shopify/main`.
+- Alterações devem entrar por branch e Pull Request.
+- Nenhuma publicação ocorrerá sem validação e aprovação explícita da KARV.
