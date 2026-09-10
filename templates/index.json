@@ -9,185 +9,68 @@
  */
 {
   "sections": {
-    "hero": {
-      "type": "karv-hero",
-      "settings": {
-        "show_intro": true,
-        "intro_video": "shopify://files/videos/grok-video-c17cef3f-96de-44c0-8b3e-a187eab2a099.mp4",
-        "intro_duration": 5,
-        "image": "shopify://shop_images/grok-image-98844737-16a7-463e-b3ed-eab218a62913.jpg",
-        "eyebrow": "KARV DESIGN",
-        "heading": "Poltrona exclusiva para ambiente exclusivo.",
-        "text": "<p>*Inovação / Comforto / Autenticidade e Identidade Visual.</p>",
-        "button_label": "CONHEÇA AS EDIÇÕES",
-        "button_link": ""
-      }
-    },
-    "editions": {
-      "type": "karv-editions",
+    "image_banner": {
+      "type": "image-banner",
       "blocks": {
-        "ryujin": {
-          "type": "edition",
+        "heading": {
+          "type": "heading",
           "settings": {
-            "collection": "",
-            "title": "RYUJIN",
-            "text": "<p>Força que habita o que é verdadeiro.</p>",
-            "link": ""
+            "heading": "Projetos",
+            "heading_size": "h2"
           }
         },
-        "mandala": {
-          "type": "edition",
+        "button": {
+          "type": "buttons",
           "settings": {
-            "collection": "",
-            "title": "MANDALA",
-            "text": "<p>Símbolos que transcendem. Formas que conectam.</p>",
-            "link": ""
+            "button_label_1": "Adicionar",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": true
           }
         }
       },
       "block_order": [
-        "ryujin",
-        "mandala"
+        "heading",
+        "button"
       ],
+      "custom_css": [],
       "settings": {
-        "eyebrow": "EDIÇÕES AUTORAIS"
+        "image": "shopify://shop_images/grok-image-06c053b7-9a65-4ea3-b871-4906de2c223d.jpg",
+        "image_2": "shopify://shop_images/ChatGPT_Image_Mar_13_2026_08_27_33_PM.png",
+        "image_overlay_opacity": 40,
+        "image_height": "small",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "image_behavior": "ambient",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
       }
     },
-    "materials": {
-      "type": "karv-materials",
-      "blocks": {
-        "finish": {
-          "type": "material",
-          "settings": {
-            "title": "ACABAMENTOS",
-            "caption": "Precisão que se sente."
-          }
-        },
-        "material": {
-          "type": "material",
-          "settings": {
-            "title": "MATERIAL",
-            "caption": "Texturas que contam histórias."
-          }
-        },
-        "design": {
-          "type": "material",
-          "settings": {
-            "title": "DESIGN AUTORAL",
-            "caption": "Formas que carregam significado."
-          }
-        },
-        "identity": {
-          "type": "material",
-          "settings": {
-            "title": "IDENTIDADE",
-            "caption": "Mais que estética, é essência."
-          }
-        }
-      },
-      "block_order": [
-        "finish",
-        "material",
-        "design",
-        "identity"
-      ],
+    "collection_list_BgnT6t": {
+      "type": "collection-list",
+      "disabled": true,
+      "name": "t:sections.collection-list.presets.name",
       "settings": {
-        "eyebrow": "FORMA, MATERIAL E EXPRESSÃO.",
-        "heading": "Cada detalhe importa.",
-        "text": "<p>Materiais selecionados, acabamentos precisos e costuras que revelam cuidado em cada ângulo.</p>",
-        "link_label": "EXPLORAR MATERIAIS",
-        "link": ""
+        "title": "Propostas",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "show_view_all": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
-    },
-    "universe": {
-      "type": "karv-universe",
-      "settings": {
-        "eyebrow": "UNIVERSO KARV",
-        "heading": "MAIS QUE POLTRONAS. SUPORTES PARA IDEIAS, ATITUDES E CULTURA.",
-        "text": "<p>A KARV transforma design em expressão. Cada edição carrega referências, histórias e intenções que ganham vida nas formas e nos materiais.</p>",
-        "link_label": "CONHEÇA NOSSO UNIVERSO",
-        "link": ""
-      }
-    },
-    "experiences": {
-      "type": "karv-experiences",
-      "blocks": {
-        "exp_ryujin": {
-          "type": "experience",
-          "settings": {
-            "title": "RYUJIN",
-            "cta": "EXPLORAR EXPERIÊNCIA",
-            "link": ""
-          }
-        },
-        "exp_mandala": {
-          "type": "experience",
-          "settings": {
-            "title": "MANDALA",
-            "cta": "EXPLORAR EXPERIÊNCIA",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "exp_ryujin",
-        "exp_mandala"
-      ],
-      "settings": {
-        "eyebrow": "EXPERIÊNCIAS KARV"
-      }
-    },
-    "services": {
-      "type": "karv-services",
-      "blocks": {
-        "attendance": {
-          "type": "service",
-          "settings": {
-            "icon": "◯",
-            "title": "ATENDIMENTO",
-            "text": "Especializado e humano em todas as etapas."
-          }
-        },
-        "production": {
-          "type": "service",
-          "settings": {
-            "icon": "△",
-            "title": "PRODUÇÃO",
-            "text": "Processos cuidadosos para resultados únicos."
-          }
-        },
-        "delivery": {
-          "type": "service",
-          "settings": {
-            "icon": "□",
-            "title": "ENTREGA",
-            "text": "Segurança e pontualidade para todo o Brasil."
-          }
-        },
-        "payment": {
-          "type": "service",
-          "settings": {
-            "icon": "◇",
-            "title": "PAGAMENTO SEGURO",
-            "text": "Ambiente protegido e confiável."
-          }
-        }
-      },
-      "block_order": [
-        "attendance",
-        "production",
-        "delivery",
-        "payment"
-      ],
-      "settings": {}
     }
   },
   "order": [
-    "hero",
-    "editions",
-    "materials",
-    "universe",
-    "experiences",
-    "services"
+    "image_banner",
+    "collection_list_BgnT6t"
   ]
 }

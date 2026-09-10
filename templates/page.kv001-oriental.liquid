@@ -1,0 +1,878 @@
+{% layout 'theme' %}
+
+{% style %}
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0a0a0a;
+    --gold: #b89a5e;
+    --white: #f0ede8;
+    --muted: #6b6b6b;
+    --text: #c0bdb8;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  .kv {
+    background: var(--bg);
+    color: var(--white);
+    font-family: var(--sans);
+    font-weight: 300;
+  }
+
+  .kv *, .kv *::before, .kv *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ─── HERO ─── */
+  .kv-hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid #1a1a1a;
+    overflow: hidden;
+  }
+
+  @media (max-width: 768px) {
+    .kv-hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+  }
+
+  .kv-hero__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 48px;
+  }
+
+  @media (max-width: 768px) {
+    .kv-hero__left {
+      padding: 64px 24px 48px;
+      order: 2;
+    }
+  }
+
+  .kv-hero__right {
+    position: relative;
+    overflow: hidden;
+    min-height: 600px;
+  }
+
+  @media (max-width: 768px) {
+    .kv-hero__right {
+      min-height: 70vw;
+      order: 1;
+    }
+  }
+
+  .kv-hero__right img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.8s ease;
+  }
+
+  .kv-hero__right:hover img {
+    transform: scale(1.03);
+  }
+
+  .kv-hero__eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  .kv-hero__title {
+    font-family: var(--serif);
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  .kv-hero__sub {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+    max-width: 420px;
+    margin-bottom: 16px;
+  }
+
+  .kv-hero__note {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    opacity: 0.8;
+  }
+
+  .kv-btn {
+    display: inline-block;
+    padding: 16px 40px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: transparent;
+  }
+
+  .kv-btn:hover {
+    background: var(--gold);
+    color: var(--bg);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(184,154,94,0.2);
+  }
+
+  /* ─── SECTIONS ─── */
+  .kv-section {
+    padding: 100px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+    border-bottom: 1px solid #1a1a1a;
+  }
+
+  .kv-section--full {
+    max-width: 100%;
+    padding: 100px 0;
+    border-bottom: 1px solid #1a1a1a;
+  }
+
+  .kv-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 40px;
+  }
+
+  .kv-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 28px;
+  }
+
+  .kv-body {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text);
+    max-width: 640px;
+  }
+
+  /* ─── TWO COLUMNS ─── */
+  .kv-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .kv-cols {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  /* ─── PECA DUPLA VISUAL ─── */
+  .kv-peca {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    margin-top: 48px;
+  }
+
+  @media (max-width: 768px) {
+    .kv-peca {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .kv-peca-img {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .kv-peca-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .kv-peca-img:hover img {
+    transform: scale(1.04);
+  }
+
+  .kv-peca-img__label {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    background: rgba(0,0,0,0.4);
+    padding: 4px 10px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* ─── IMAGE ─── */
+  .kv-img-wrap {
+    width: 100%;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+  }
+
+  .kv-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .kv-img-wrap:hover img {
+    transform: scale(1.03);
+  }
+
+  /* ─── LIST ─── */
+  .kv-list {
+    list-style: none;
+  }
+
+  .kv-list li {
+    padding: 20px 0;
+    border-bottom: 1px solid #1a1a1a;
+    font-size: 15px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .kv-list li::before {
+    content: '—';
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ─── TERMS ─── */
+  .kv-terms {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  @media (max-width: 768px) {
+    .kv-terms {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .kv-terms-block {
+    padding: 40px;
+    border: 1px solid #1a1a1a;
+    background: #0d0d0d;
+  }
+
+  .kv-terms-block__num {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .kv-terms-block__title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .kv-terms-block ul {
+    list-style: none;
+  }
+
+  .kv-terms-block ul li {
+    font-size: 13px;
+    color: #9a9690;
+    line-height: 1.7;
+    padding: 6px 0;
+    border-bottom: 1px solid #141414;
+    display: flex;
+    gap: 10px;
+  }
+
+  .kv-terms-block ul li::before {
+    content: '·';
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .kv-terms-block--highlight {
+    border-color: #2a2218;
+    background: #0f0d09;
+  }
+
+  .kv-terms-block--highlight .kv-terms-block__title {
+    color: var(--gold);
+  }
+
+  /* ─── GALLERY ─── */
+  .kv-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+
+  @media (max-width: 600px) {
+    .kv-gallery {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .kv-gallery-item {
+    aspect-ratio: 1;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .kv-gallery-item--tall {
+    aspect-ratio: 3/4;
+  }
+
+  .kv-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .kv-gallery-item:hover img {
+    transform: scale(1.05);
+  }
+
+  .kv-gallery-item__tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    background: rgba(0,0,0,0.45);
+    padding: 3px 8px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* ─── SPLIT VISUAL ─── */
+  .kv-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid #1a1a1a;
+    min-height: 500px;
+  }
+
+  @media (max-width: 768px) {
+    .kv-split {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .kv-split__img {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .kv-split__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .kv-split__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+    background: #050505;
+  }
+
+  @media (max-width: 768px) {
+    .kv-split__text {
+      padding: 60px 24px;
+    }
+  }
+
+  .kv-split__quote {
+    font-family: var(--serif);
+    font-size: clamp(24px, 3vw, 40px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.35;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+
+  .kv-split__sub {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 360px;
+  }
+
+  /* ─── FORM ─── */
+  .kv-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .kv-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .kv-field label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .kv-field input,
+  .kv-field textarea {
+    background: #0f0f0f;
+    border: 1px solid #2a2a2a;
+    color: var(--white);
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 300;
+    padding: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .kv-field input:focus,
+  .kv-field textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .kv-field textarea {
+    min-height: 140px;
+    resize: vertical;
+  }
+
+  .kv-form-success {
+    padding: 24px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+  /* ─── CLOSING ─── */
+  .kv-closing {
+    padding: 120px 24px;
+    text-align: center;
+    background: #050505;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kv-closing__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://cdn.shopify.com/s/files/1/0635/2741/9974/files/KV_001_ORIENTAL_3_00f2df44-b5d3-45bc-96a7-709d6d250b98.jpg?v=1779222983');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.05;
+  }
+
+  .kv-closing p {
+    font-family: var(--serif);
+    font-size: clamp(22px, 3vw, 38px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--white);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── FADE IN ─── */
+  .kv-fade {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .kv-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── HEADER/FOOTER OVERRIDE ─── */
+  #shopify-section-header,
+  #shopify-section-footer,
+  header,
+  footer {
+    display: none !important;
+  }
+{% endstyle %}
+
+<div class="kv">
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════════ -->
+  <section class="kv-hero">
+    <div class="kv-hero__left kv-fade">
+      <p class="kv-hero__eyebrow">K-ARV · Projeto de Parceria</p>
+      <h1 class="kv-hero__title">Tema<br>Oriental</h1>
+      <p class="kv-hero__sub">
+        Uma peça que não ocupa o espaço.<br>Define o ambiente.
+      </p>
+      <p class="kv-hero__note">Seleção ativa · poucas unidades disponíveis</p>
+      <a href="#aplicar" class="kv-btn">Aplicar para o projeto</a>
+    </div>
+    <div class="kv-hero__right">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0635/2741/9974/files/KV_001_ORIENTAL_2_b7768b04-46ee-4a9f-b281-d5137ffb298a.jpg?v=1779222983"
+        alt="Poltrona tema Oriental — render neutro frontal"
+        loading="eager"
+        data-swap="RENDER_NEUTRO_FRONTAL"
+      >
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       O PROJETO
+  ════════════════════════════════════════════ -->
+  <section class="kv-section kv-fade">
+    <p class="kv-label">O Projeto</p>
+    <h2 class="kv-title">Este não é um produto de catálogo.</h2>
+    <p class="kv-body">
+      A Poltrona tema Oriental é uma peça construída para ambientes que já possuem identidade.
+      Não selecionamos qualquer espaço. Selecionamos estúdios que entendem que cada elemento
+      inserido carrega intenção. A KARV oferece esta peça como parceria —
+      porque autenticidade reconhece autenticidade.
+    </p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       A PEÇA
+  ════════════════════════════════════════════ -->
+  <section class="kv-section kv-fade" style="max-width:1200px;">
+    <p class="kv-label">A Peça</p>
+    <div class="kv-cols">
+      <div>
+        <h2 class="kv-title">Poltrona tema Oriental</h2>
+        <p class="kv-body">
+          Geometria firme. Volumes controlados. Cada linha foi concebida
+          com intenção arquitetônica clara — sem ornamento, sem excesso.<br><br>
+          O revestimento Oriental não é acabamento. É linguagem.
+          Dragão e peônias em veludo de alta densidade: padrão autoral
+          que carrega identidade, tensão visual e expressão própria.
+          Pertencente à categoria Identidade Urbana da KARV —
+          uma presença que organiza o ambiente ao redor de si.
+        </p>
+      </div>
+      <div class="kv-peca">
+        <div class="kv-peca-img">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0635/2741/9974/files/KV_001_ORIENTAL_5_8b2883ee-fb77-47d4-9b6b-46f2bbe9603f.jpg?v=1779222983"
+            alt="Poltrona tema Oriental — estrutura da peça, render neutro 3/4"
+            loading="lazy"
+            data-swap="RENDER_NEUTRO_34"
+          >
+          <span class="kv-peca-img__label">Estrutura</span>
+        </div>
+        <div class="kv-peca-img">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0635/2741/9974/files/KV_001_ORIENTAL_6_84284ad7-f478-46a4-a646-bef2214618a0.jpg?v=1779222984"
+            alt="Poltrona tema Oriental — revestimento"
+            loading="lazy"
+          >
+          <span class="kv-peca-img__label">Revestimento</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SPLIT
+  ════════════════════════════════════════════ -->
+  <div class="kv-split kv-fade">
+    <div class="kv-split__img">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0635/2741/9974/files/KV_001_ORIENTAL_3_00f2df44-b5d3-45bc-96a7-709d6d250b98.jpg?v=1779222983"
+        alt="Poltrona tema Oriental — render neutro, vista lateral"
+        loading="lazy"
+        data-swap="RENDER_NEUTRO_LATERAL"
+      >
+    </div>
+    <div class="kv-split__text">
+      <p class="kv-split__quote">
+        "A peça não se adapta ao ambiente.<br>
+        O ambiente se organiza ao redor dela."
+      </p>
+      <p class="kv-split__sub">
+        A Poltrona tema Oriental foi desenvolvida para espaços com direção estética definida.
+        Não é mobiliário decorativo. É declaração de posição.
+      </p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       PARA QUEM É
+  ════════════════════════════════════════════ -->
+  <section class="kv-section kv-fade">
+    <p class="kv-label">Para Quem É</p>
+    <h2 class="kv-title">Espaços com identidade própria</h2>
+    <ul class="kv-list">
+      <li>Estúdios de tatuagem com direção estética definida</li>
+      <li>Espaços autorais — ateliês, galerias, estúdios criativos</li>
+      <li>Ambientes com identidade visual forte e coerente</li>
+      <li>Marcas que entendem o valor da presença no espaço</li>
+    </ul>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       GALERIA
+  ════════════════════════════════════════════ -->
+  <section class="kv-section--full kv-fade">
+    <div style="max-width:900px;margin:0 auto 40px;padding:0 24px;">
+      <p class="kv-label">Galeria</p>
+    </div>
+    <div class="kv-gallery">
+
+      <div class="kv-gallery-item">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0635/2741/9974/files/KV_001_ORIENTAL_2_b7768b04-46ee-4a9f-b281-d5137ffb298a.jpg?v=1779222983"
+          alt="Poltrona tema Oriental — render neutro frontal"
+          loading="lazy"
+          data-swap="RENDER_NEUTRO_FRONTAL"
+        >
+        <span class="kv-gallery-item__tag">Estrutura</span>
+      </div>
+
+      <div class="kv-gallery-item">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0635/2741/9974/files/KV_001_ORIENTAL_5_8b2883ee-fb77-47d4-9b6b-46f2bbe9603f.jpg?v=1779222983"
+          alt="Poltrona tema Oriental — vista frontal"
+          loading="lazy"
+        >
+        <span class="kv-gallery-item__tag">Oriental</span>
+      </div>
+
+      <div class="kv-gallery-item">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0635/2741/9974/files/KV_001_ORIENTAL_6_84284ad7-f478-46a4-a646-bef2214618a0.jpg?v=1779222984"
+          alt="Poltrona tema Oriental — diagonal"
+          loading="lazy"
+        >
+        <span class="kv-gallery-item__tag">Oriental</span>
+      </div>
+
+      <div class="kv-gallery-item">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0635/2741/9974/files/KV_001_ORIENTAL_1_c228be69-5975-417c-9cd3-4854ed06b31e.jpg?v=1779222984"
+          alt="Poltrona tema Oriental — render neutro 3/4"
+          loading="lazy"
+          data-swap="RENDER_NEUTRO_34"
+        >
+        <span class="kv-gallery-item__tag">Estrutura</span>
+      </div>
+
+      <div class="kv-gallery-item">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0635/2741/9974/files/KV_001_ORIENTAL_4_f03394ce-c940-4524-91b0-9017624dedc6.jpg?v=1779222983"
+          alt="Poltrona tema Oriental — detalhe tecido"
+          loading="lazy"
+        >
+        <span class="kv-gallery-item__tag">Detalhe</span>
+      </div>
+
+      <div class="kv-gallery-item">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0635/2741/9974/files/KV_001_ORIENTAL_3_00f2df44-b5d3-45bc-96a7-709d6d250b98.jpg?v=1779222983"
+          alt="Poltrona tema Oriental — detalhe costura"
+          loading="lazy"
+        >
+        <span class="kv-gallery-item__tag">Detalhe</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       TERMOS DA PARCERIA
+  ════════════════════════════════════════════ -->
+  <section class="kv-section kv-fade">
+    <p class="kv-label">Termos da Parceria</p>
+    <h2 class="kv-title">Condições e critérios</h2>
+    <div class="kv-terms">
+
+      <div class="kv-terms-block">
+        <span class="kv-terms-block__num">01</span>
+        <p class="kv-terms-block__title">O que a KARV oferece</p>
+        <ul>
+          <li>1 unidade da Poltrona tema Oriental</li>
+          <li>Condição especial de participação: R$ 600,00</li>
+          <li>Peça autoral exclusiva para o espaço do estúdio</li>
+        </ul>
+      </div>
+
+      <div class="kv-terms-block">
+        <span class="kv-terms-block__num">02</span>
+        <p class="kv-terms-block__title">O que o estúdio entrega</p>
+        <ul>
+          <li>1 Reel com a poltrona no ambiente do estúdio</li>
+          <li>3 posts no feed do Instagram com a peça</li>
+          <li>Stories durante o recebimento e instalação</li>
+          <li>Marcação @karv em todo o conteúdo</li>
+        </ul>
+      </div>
+
+      <div class="kv-terms-block">
+        <span class="kv-terms-block__num">03</span>
+        <p class="kv-terms-block__title">Critérios de seleção</p>
+        <ul>
+          <li>Estúdio autoral com identidade visual definida</li>
+          <li>Perfil ativo no Instagram</li>
+          <li>Espaço que comunica presença e estética</li>
+          <li>Alinhamento com a linguagem da marca KARV</li>
+        </ul>
+      </div>
+
+      <div class="kv-terms-block">
+        <span class="kv-terms-block__num">04</span>
+        <p class="kv-terms-block__title">Termos de produção</p>
+        <ul>
+          <li>Produção inicia somente após confirmação do pagamento</li>
+          <li>Prazo de entrega alinhado após aprovação</li>
+          <li>Personalização com arte do estúdio possível com ajuste de valor</li>
+          <li>Render 3D enviado para aprovação antes de qualquer produção</li>
+        </ul>
+      </div>
+
+      <div class="kv-terms-block">
+        <span class="kv-terms-block__num">05</span>
+        <p class="kv-terms-block__title">Disponibilidade</p>
+        <ul>
+          <li>Unidades limitadas</li>
+          <li>Seleção feita pela KARV com base no perfil do estúdio</li>
+          <li>Não aberto ao público geral — convite e candidatura apenas</li>
+        </ul>
+      </div>
+
+      <div class="kv-terms-block kv-terms-block--highlight">
+        <span class="kv-terms-block__num">06</span>
+        <p class="kv-terms-block__title">Valor de participação</p>
+        <ul>
+          <li>R$ 600,00 após aprovação e confirmação</li>
+          <li>Pagamento via link enviado diretamente ao estúdio selecionado</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FORMULÁRIO
+  ════════════════════════════════════════════ -->
+  <section class="kv-section kv-fade" id="aplicar">
+    <p class="kv-label">Aplicar</p>
+    <h2 class="kv-title">Seu espaço faz sentido para a K-ARV?</h2>
+    <p class="kv-body" style="margin-bottom:48px;">
+      Preencha o formulário. Analisamos cada candidatura individualmente.
+    </p>
+
+    {% form 'contact' %}
+      {% if form.posted_successfully? %}
+        <div class="kv-form-success">
+          Candidatura recebida. Entraremos em contato em breve.
+        </div>
+      {% else %}
+        <div class="kv-form">
+          <div class="kv-field">
+            <label for="contact_name">Nome do estúdio</label>
+            <input type="text" id="contact_name" name="contact[name]" required>
+          </div>
+          <div class="kv-field">
+            <label for="contact_email">E-mail</label>
+            <input type="email" id="contact_email" name="contact[email]" required>
+          </div>
+          <div class="kv-field">
+            <label for="contact_instagram">Instagram</label>
+            <input type="text" id="contact_instagram" name="contact[body][instagram]" placeholder="@seuestudio">
+          </div>
+          <div class="kv-field">
+            <label for="contact_city">Cidade</label>
+            <input type="text" id="contact_city" name="contact[body][cidade]" required>
+          </div>
+          <div class="kv-field">
+            <label for="contact_message">Descreva a linguagem do seu espaço e como a KARV se integra a ela</label>
+            <textarea id="contact_message" name="contact[body][mensagem]" required></textarea>
+          </div>
+          <button type="submit" class="kv-btn" style="align-self:flex-start;">Enviar candidatura</button>
+        </div>
+      {% endif %}
+    {% endform %}
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CLOSING
+  ════════════════════════════════════════════ -->
+  <div class="kv-closing kv-fade">
+    <div class="kv-closing__bg"></div>
+    <p>K-ARV não desenvolve mobiliário.<br>Constrói presença, estrutura e permanência no espaço.</p>
+  </div>
+
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.kv-fade').forEach(el => observer.observe(el));
+</script>

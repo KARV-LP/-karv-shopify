@@ -1,0 +1,201 @@
+{% schema %}
+{
+  "name": "KARV Page",
+  "settings": [],
+  "presets": [
+    {
+      "name": "KARV Page"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.karv-wrapper {
+  background:#0a0a0a;
+  color:#ccc5bb;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* HERO */
+.karv-hero {
+  min-height: 90vh;
+  display:flex;
+  align-items:flex-end;
+  padding:80px 40px;
+}
+
+.karv-hero h1 {
+  font-family:'Cormorant Garamond', serif;
+  font-size:64px;
+  font-weight:300;
+  color:#f0ece4;
+  line-height:1.1;
+}
+
+.karv-hero p {
+  margin-top:24px;
+  max-width:420px;
+  color:#7a7570;
+  font-size:13px;
+  line-height:1.8;
+}
+
+/* SECTION BASE */
+.karv-section {
+  padding:120px 40px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.karv-title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:42px;
+  color:#f0ece4;
+  font-weight:300;
+  margin-bottom:32px;
+}
+
+.karv-text {
+  font-size:13px;
+  line-height:2;
+  color:#7a7570;
+  max-width:700px;
+}
+
+/* DESTAQUE */
+.karv-highlight {
+  border-left:1px solid #b89a5e;
+  padding-left:20px;
+  margin:40px 0;
+  font-style:italic;
+  color:#ccc5bb;
+}
+
+/* GRID */
+.karv-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+}
+
+.karv-img img {
+  width:100%;
+  height:auto;
+  object-fit:cover;
+}
+
+/* LISTA */
+.karv-list {
+  margin-top:40px;
+}
+
+.karv-list div {
+  margin-bottom:16px;
+  font-size:12px;
+  color:#ccc5bb;
+}
+
+/* AUTENTICIDADE */
+.karv-box {
+  border:1px solid rgba(184,154,94,0.2);
+  padding:40px;
+  margin-top:40px;
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+}
+
+/* RESPONSIVO */
+@media(max-width:900px){
+  .karv-grid {
+    grid-template-columns:1fr;
+  }
+  .karv-hero h1 {
+    font-size:42px;
+  }
+}
+</style>
+
+<div class="karv-wrapper">
+
+  <!-- HERO -->
+  <section class="karv-hero">
+    <div>
+      <h1>Design que estrutura presença.</h1>
+      <p>
+        Um espaço autoral não é composto por escolhas aleatórias.
+        Cada elemento inserido carrega intenção, linguagem e direção estética.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONCEITO -->
+  <section class="karv-section karv-grid">
+    <div>
+      <h2 class="karv-title">
+        Não desenvolvemos mobiliário.<br>
+        Construímos estruturas de presença.
+      </h2>
+
+      <p class="karv-text">
+        A KARV nasce dentro de uma lógica clara: cada peça é concebida como um elemento estrutural dentro do espaço — não como complemento visual, mas como ponto de ancoragem que organiza a leitura do ambiente.
+      </p>
+
+      <div class="karv-highlight">
+        A estrutura não é suporte. É o próprio discurso.
+      </div>
+
+      <p class="karv-text">
+        Nada é excesso. Nada é concessão. O valor está na clareza do desenho, na força da proporção e na consciência da materialidade.
+      </p>
+    </div>
+
+    <div class="karv-img">
+      <img src="
+
+    </div>
+  </section>
+
+  <!-- POLTRONA -->
+  <section class="karv-section">
+    <h2 class="karv-title">A Poltrona KARV</h2>
+
+    <p class="karv-text">
+      A Poltrona KARV é resultado de um desenho controlado: geometria firme, volumes definidos e uma relação direta entre forma e material.
+    </p>
+
+    <div class="karv-highlight">
+      O revestimento não é acabamento. É linguagem.
+    </div>
+
+    <div class="karv-list">
+      <div>01 — Tramas Orgânicas</div>
+      <div>02 — Peles e Estruturados</div>
+      <div>03 — Fibras Clássicas</div>
+      <div>04 — Toque e Profundidade</div>
+      <div>05 — Identidade Urbana</div>
+    </div>
+  </section>
+
+  <!-- AUTENTICIDADE -->
+  <section class="karv-section">
+    <h2 class="karv-title">
+      Projetos com identidade exigem decisões à mesma altura.
+    </h2>
+
+    <p class="karv-text">
+      A KARV se insere nesses espaços como continuidade. A relação não é de encaixe. É de coerência.
+    </p>
+
+    <div class="karv-box">
+      Autenticidade reconhece linguagem.<br>
+      A KARV não suaviza o espaço.<br>
+      Ela define.
+    </div>
+
+    <p class="karv-text">
+      Não buscamos leveza aparente. Construímos permanência.
+    </p>
+  </section>
+
+</div>
